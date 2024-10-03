@@ -23,8 +23,8 @@ FROM node:18-alpine AS production
 WORKDIR /app
 
 # Copy the built files from the build stage
-COPY --from=builder /app/build build/
-COPY --from=builder /app/package.json .
+COPY --from=build /app/build build/
+COPY --from=build /app/package.json .
 
 # Install only production dependencies
 RUN npm install --only=production
